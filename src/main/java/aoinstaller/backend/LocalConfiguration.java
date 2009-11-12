@@ -31,7 +31,9 @@ public class LocalConfiguration {
 
     public LocalConfiguration() throws IOException{
 
-        if(System.getProperty("javawebstart.version") != null){
+        if(System.getProperty("AoInstaller.sourceURL") != null &&
+                System.getProperty("AoInstaller.appName") != null)
+        {
             System.out.println("Webstart!");
             webStart = true;
         }

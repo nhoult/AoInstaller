@@ -54,6 +54,9 @@ public class AoInstallerView extends FrameView {
         console = new Console();
         console.setVisible(false);
 
+        //System.out.println(System.getProperties());
+        System.getProperties().list(System.out);
+
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");

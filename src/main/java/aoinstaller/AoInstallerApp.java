@@ -39,6 +39,10 @@ public class AoInstallerApp extends SingleFrameApplication {
      * Main method launching the application.
      */
     public static void main(String[] args) {
+        for(int i = 0; i < args.length; ++i){
+            String arg = args[i];
+            System.setProperty("arg."+i, arg);
+        }
         launch(AoInstallerApp.class, args);
     }
 }

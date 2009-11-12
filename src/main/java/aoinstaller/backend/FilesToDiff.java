@@ -71,13 +71,22 @@ public class FilesToDiff {
 
                 String localFile = installPath + System.getProperty("file.separator") + el.getAttribute("local");
                 String url = el.getAttribute("remote");
+                FileInfo fi = new FileInfo(localFile, url);
                 if(el.hasAttribute("MD5")){
                     String MD5 = el.getAttribute("MD5");
-                    files.add(new FileInfo(localFile, url, MD5));
-                } else {
-//                  System.out.println("local[" + localFile + "] remote[" + url +"]");
-                    files.add(new FileInfo(localFile, url));
+//                    files.add(new FileInfo(localFile, url, MD5));
+                    fi.setRemoteMD5(MD5);
                 }
+                if(el.hasAttribute("size")){
+                    int size = -1;
+                    try{
+                        size = Integer.parseInt(el.getAttribute("size"));
+                    } catch (Exception e){
+                        size = -1;
+                    }
+                    fi.setRemoteSize(size);
+                }
+                files.add(fi);
             }
 	}
     }

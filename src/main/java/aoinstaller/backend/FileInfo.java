@@ -44,11 +44,14 @@ public class FileInfo extends Thread {
     // callback
     private FileInfoCallback callback = null;
 
+//    public FileInfo(){
+//
+//    }
 
-    public FileInfo(String localFile, String remoteURL, String remoteMD5) throws IOException {
-      this(localFile, remoteURL);
-      this.remoteMD5 = remoteMD5;
-    }
+//    public FileInfo(String localFile, String remoteURL, String remoteMD5) throws IOException {
+//      this(localFile, remoteURL);
+//      this.remoteMD5 = remoteMD5;
+//    }
 
     public FileInfo(String localFile, String remoteURL) throws IOException {
         this.localFile = localFile;
@@ -61,19 +64,23 @@ public class FileInfo extends Thread {
         conn = url.openConnection();
     }
 
-//    private void startConnection() throws IOException{
-        
-//    }
-    
-//    private void closeConnection() throws IOException{
-        
-//    }
-    
+    public String getRemoteMD5() {
+        return remoteMD5;
+    }
+
+    public void setRemoteMD5(String remoteMD5) {
+        this.remoteMD5 = remoteMD5;
+    }
+
     public int getRemoteSize(){
         if(remoteSize < 0){
             remoteSize = conn.getContentLength();
         }
         return remoteSize;
+    }
+
+    public void setRemoteSize(int remoteSize){
+        this.remoteSize = remoteSize;
     }
 
     public long getLocalSize(){
