@@ -121,13 +121,23 @@ public class FileInfo extends Thread {
             while((read = fr.read(buffer)) > 0){
                 digest.update(buffer, 0, read);
             }
-            byte[] md5sum = digest.digest();
-	    BigInteger bigInt = new BigInteger(1, md5sum);
-	    localMD5 = bigInt.toString(16);
+            //localMD5 = digest.toString();
+            //byte[] md5sum = digest.digest();
+            
+	    localMD5 = new BigInteger(1, digest.digest()).toString(16);
+            // bigint will trim leading 0 so I have add any missing...
+            while( localMD5.length() < remoteMD5.length()){
+                localMD5 = "0"+localMD5; // not the most effecient but whatever...
+            }
 
             fr.close(); // cleanup
         }
-        //System.out.println("Remote MD5 ["+remoteMD5+"] Local MD5 ["+localMD5+"]");
+
+
+
+        if(!remoteMD5.equals(localMD5)){
+            System.out.println("["+localFile+"] Remote MD5 ["+remoteMD5+"] Local MD5 ["+localMD5+"]");
+        }
         return !remoteMD5.equals(localMD5);
     }
 

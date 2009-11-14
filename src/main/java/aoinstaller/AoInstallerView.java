@@ -111,9 +111,8 @@ public class AoInstallerView extends FrameView {
             }
         });
 
-//        System.setProperty("javawebstart.version", "javaws-1.0.1-ea");
-//        System.setProperty("AoInstaller.appName", "AoSpaceInvaders");
-//        System.setProperty("AoInstaller.sourceURL", "http://hoult.selfip.com/~nhoult/AoSpaceInvaders.xml");
+//        System.setProperty("AoInstaller.appName", "BFW");
+//        System.setProperty("AoInstaller.sourceURL", "http://necrons.game-server.cc/downloads/AoInstaller/BFW.cgi");
 
         try {
             config = new LocalConfiguration();
